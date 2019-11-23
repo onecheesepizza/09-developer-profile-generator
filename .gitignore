@@ -1,0 +1,4 @@
+node_modules/
+*.txt
+profile.*
+.DS_Store

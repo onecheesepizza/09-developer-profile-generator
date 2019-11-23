@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Developer Pro</title>
+    </head>
+    <body>
+    <style>
+    html{
+        height:100%;
+    }
+    body {
+        background-color: rgb(218, 218, 218);
+        margin:0px;
+        padding:0px;
+        height:100%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    #stats{
+        max-width:35em;
+        margin: 0 auto;
+    }
+    header {
+        background-color: rgb(197, 197, 197);
+        padding:1em 1em 0em 1em;
+        margin:0px;
+        border-bottom: 2px solid white;
+    }
+    #profile-image{
+        width:150px;
+        height:150px;
+        display:inline-block;
+        border: 2px solid white;
+    }
+    #header-card{
+        margin: 2em auto 0em auto;
+        padding:1em;
+        text-align:center;
+        color:white;
+        border: 2px solid white;
+        border-radius: .5em .5em 0em 0em;
+        border-bottom: none;
+        background-color: ${bgColor};
+        max-width:25em;
+    }
+    a {
+        color:white;
+        text-decoration: none;
+    }
+    a:hover {
+        color:rgb(194, 194, 194);
+        text-decoration: none;
+    }
+    content {
+        height:100%;
+    }
+    #row1, #row2 {
+        display:block;
+        text-align: center;
+    }
+    .card {
+        vertical-align: middle;
+        background-color: ${bgColor};
+        border: 2px solid white;
+        border-radius: .5em;
+        padding:1em !important;
+        margin: .5em;
+        display: inline-block;
+        width:12em;
+        height:2em;
+        text-align: center;
+        color:white;
+    }
+    </style>   
+    <header>
+        <div id="header-card">
+            <img id="profile-image" src="${data.avatar_url}">
+            <h2>Hi, my name is ${data.name}!</h2>
+            <div>Currently at ${data.company}</div>
+            <div>${data.location}</div>
+            <span><a href="${data.html_url}"">Github</a></span> | 
+            <span><a href="https://${data.blog}">Website</a></span>
+        </div>
+    </header> 
+    <content>
+        <h2 id="tagline"></h2>
+        <div id="stats">
+            <div id="row1">
+                <div class="card">Public Repos: ${data.public_repos}</div>
+                <div class="card">Followers: ${data.followers}</div>
+            </div>
+            <div id="row2">
+                <div class="card">GitHub Stars: ${numStars}</div>
+                <div class="card">Following: ${data.following}</div>
+            </div>
+        </div>
+    </content>
+    </body>
+    </html>
