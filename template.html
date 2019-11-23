@@ -56,6 +56,16 @@
     content {
         height:100%;
     }
+    #bio {
+        margin: 1em auto;
+        text-align: center;
+        color:white;
+        background-color: ${bgColor};
+        border: 2px solid white;
+        border-radius: .5em;
+        max-width:25em;
+        padding:.5em;
+    }
     #row1, #row2 {
         display:block;
         text-align: center;
@@ -85,7 +95,7 @@
         </div>
     </header> 
     <content>
-        <h2 id="tagline"></h2>
+        <h4 id="bio">${data.bio}</h4>
         <div id="stats">
             <div id="row1">
                 <div class="card">Public Repos: ${data.public_repos}</div>
