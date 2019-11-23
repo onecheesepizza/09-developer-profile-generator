@@ -13,4 +13,4 @@ A Node.js command line interface application that generates a PDF using the user
 
 ![Screenshot](images/09-profile-gen-sc1.png)  
 
-![Screenshot](images/09-profile-gen-sc2.png)
+![Screenshot](images/09-profile-gen-sc2.1.png)
