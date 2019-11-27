@@ -11,6 +11,8 @@ A Node.js command line interface application that generates a PDF using the user
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS](https://img.shields.io/badge/CSS-blue)
 
-![CLI Screenshot](images/09-profile-generator-sc-orig-low-opt.gif)  
+#### CLI  
+![CLI Screenshot](images/09-profile-generator-sc-orig-low-opt.gif)    
 
+#### PDF Output  
 ![PDF Screenshot](images/09-profile-gen-sc2.2.png)
