@@ -82,7 +82,7 @@ function savePDF(html){
 async function mainApp(){
     //prompt user
     const answers = await promptUser();
-    //set answer defaults if no input redeived
+    //set answer defaults if no input received
     if (answers.userColor===''){
         answers.userColor="blue";
     }
