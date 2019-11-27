@@ -18,11 +18,8 @@ const questions = [{
     message: "What is your favorite color?"
   }
 ];
-//default bg color
-let bgColor = 'blue';
-let numStars=0;
 
-function promptUser() {
+async function promptUser() {
     const answers = inquirer.prompt(questions);
     return answers;
 }
@@ -31,19 +28,18 @@ function getGithubStars(answers){
     //create API call url
     const queryURL = `https://api.github.com/users/${answers.userName}/starred`;
     //call GitHub API for stars
-    axios
+    return axios
     .get(queryURL)
     .then((res, answers) => {
         console.log("GitHub stars received...");
-        numStars = res.data.length;
-        return answers;
+        return res.data;
     })
     .catch(err=>{
         console.log("Error getting stars from GitHub: ", err.code);
     });    
 }
 
-function getGithubData(answers){
+function getGithubProfile(answers){
     //create API call url
     let queryURL = `https://api.github.com/users/${answers.userName}`;
     //call GitHub API
@@ -56,11 +52,9 @@ function getGithubData(answers){
         .catch(err=>{
             console.log("Error getting data from GitHub: ", err.code);
         });
-    }
+}  
 
-function generatePageHTML(obj){
-    //store input as 'data' for template eval
-    const data = obj;
+function generatePageHTML(gitHubProfile, gitHubStars, answers){
     //read template from file
     let htmlTemplate = fs.readFileSync('template.html', 'utf-8');
     //evaluate template literal
@@ -79,29 +73,31 @@ function savePDF(html){
       //error  
       if (err) return console.log(err);
       //success
-      console.log(res.filename); 
       console.log("Successfully saved profile.pdf");
+      console.log(res.filename); 
     });
 }
 
-//prompt for user input and process it
-promptUser()
-    .then( answers => {
-        //set global bgColor variable to user input if not blank
-        if (answers.userColor!=""){
-            bgColor = answers.userColor;
-        }
-        //pass answers on to next function to get GitHub data
-        return answers;
-    })
-    // get GitHub user data
-    .then(getGithubData)
+//main app
+async function mainApp(){
+    //prompt user
+    const answers = await promptUser();
+    //set answer defaults if no input redeived
+    if (answers.userColor===''){
+        answers.userColor="blue";
+    }
+    if (answers.userName===''){
+        answers.userName="onecheesepizza";
+    }
+    //get GitHub profile data
+    const gitHubProfile = await getGithubProfile(answers);
+    //get GitHub star data
+    const gitHubStarsRes = await getGithubStars(answers);
+    const gitHubStars = gitHubStarsRes.length;
     //generate page HTML
-    .then(generatePageHTML)
-    //convert html to PDF
-    .then(savePDF)
-    //catch & log error
-    .catch( err => {
-        console.log("Caught: ", err);
-    });
+    const profileHTML = await generatePageHTML(gitHubProfile, gitHubStars, answers);
+    //generate and save PDF to disk
+    savePDF(profileHTML);
+}
 
+mainApp();

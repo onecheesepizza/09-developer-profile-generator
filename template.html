@@ -42,7 +42,7 @@
         border: 2px solid white;
         border-radius: .5em .5em 0em 0em;
         border-bottom: none;
-        background-color: ${bgColor};
+        background-color: ${answers.userColor};
         max-width:25em;
     }
     a {
@@ -60,7 +60,7 @@
         margin: 1em auto;
         text-align: center;
         color:white;
-        background-color: ${bgColor};
+        background-color: ${answers.userColor};
         border: 2px solid white;
         border-radius: .5em;
         max-width:25em;
@@ -72,7 +72,7 @@
     }
     .card {
         vertical-align: middle;
-        background-color: ${bgColor};
+        background-color: ${answers.userColor};
         border: 2px solid white;
         border-radius: .5em;
         padding:1em !important;
@@ -86,24 +86,24 @@
     </style>   
     <header>
         <div id="header-card">
-            <img id="profile-image" src="${data.avatar_url}">
-            <h2>Hi, my name is ${data.name}!</h2>
-            <div>Currently at ${data.company}</div>
-            <div>${data.location}</div>
-            <span><a href="${data.html_url}"">Github</a></span> | 
-            <span><a href="https://${data.blog}">Website</a></span>
+            <img id="profile-image" src="${gitHubProfile.avatar_url}">
+            <h2>Hi, my name is ${gitHubProfile.name || answers.userName}!</h2>
+            <div>Currently at ${gitHubProfile.company || 'n/a'}</div>
+            <div>${gitHubProfile.location}</div>
+            <span><a href="${gitHubProfile.html_url}"">Github</a></span> | 
+            <span><a href="https://${gitHubProfile.blog}">Website</a></span>
         </div>
     </header> 
     <content>
-        <h4 id="bio">${data.bio}</h4>
+        <h4 id="bio">${gitHubProfile.bio}</h4>
         <div id="stats">
             <div id="row1">
-                <div class="card">Public Repos: ${data.public_repos}</div>
-                <div class="card">Followers: ${data.followers}</div>
+                <div class="card">Public Repos: ${gitHubProfile.public_repos}</div>
+                <div class="card">Followers: ${gitHubProfile.followers}</div>
             </div>
             <div id="row2">
-                <div class="card">GitHub Stars: ${numStars}</div>
-                <div class="card">Following: ${data.following}</div>
+                <div class="card">GitHub Stars: ${gitHubStars}</div>
+                <div class="card">Following: ${gitHubProfile.following}</div>
             </div>
         </div>
     </content>
