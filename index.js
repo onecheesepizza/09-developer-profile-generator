@@ -19,7 +19,7 @@ const questions = [{
   }
 ];
 
-async function promptUser() {
+function promptUser() {
     const answers = inquirer.prompt(questions);
     return answers;
 }
