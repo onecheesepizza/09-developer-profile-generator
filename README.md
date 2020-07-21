@@ -5,7 +5,7 @@ A Node.js command line interface application that generates a PDF using the user
 
 [![Node.js](https://img.shields.io/badge/Node.js-green)](https://nodejs.org)
 ![Javascript](https://img.shields.io/badge/Javascript-yellow)
-[![HTML-PDF](https://img.shields.io/badge/Node%20HTML%20PDF-red)](https://github.com/marcbachmann/node-html-pdf)
+[![Puppeteer](https://img.shields.io/badge/Puppeteer-teal)](https://github.com/puppeteer/puppeteer)
 [![Axios](https://img.shields.io/badge/Axios-black)](https://github.com/axios/axios)
 [![inquirer](https://img.shields.io/badge/inquirer-yellow)](https://github.com/SBoudrias/Inquirer.js/)
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
