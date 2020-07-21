@@ -2,12 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const axios = require('axios');
 const puppeteer = require('puppeteer');
-const pdf = require('html-pdf');
-const pdfOptions = { 
-    format: 'Letter',
-    orientation: 'portrait', 
-    border: '0'
-};
+
 const questions = [{
     type: 'input',
     name: 'userName',
