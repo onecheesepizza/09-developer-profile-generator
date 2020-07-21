@@ -88,14 +88,14 @@
         <div id="header-card">
             <img id="profile-image" src="${gitHubProfile.avatar_url}">
             <h2>Hi, my name is ${gitHubProfile.name || answers.userName}!</h2>
-            <div>Currently at ${gitHubProfile.company || 'n/a'}</div>
-            <div>${gitHubProfile.location}</div>
-            <span><a href="${gitHubProfile.html_url}"">Github</a></span> | 
-            <span><a href="https://${gitHubProfile.blog}">Website</a></span>
+            <div>${gitHubProfile.company || ""}</div>
+            <div>${gitHubProfile.location || ""}</div>
+            <span><a href="${gitHubProfile.html_url  || "#"}"">Github</a></span> | 
+            <span><a href="https://${gitHubProfile.blog  || "#"}">Website</a></span>
         </div>
     </header> 
     <content>
-        <h4 id="bio">${gitHubProfile.bio}</h4>
+        <h4 id="bio">${gitHubProfile.bio || ""}</h4>
         <div id="stats">
             <div id="row1">
                 <div class="card">Public Repos: ${gitHubProfile.public_repos}</div>
