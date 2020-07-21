@@ -43,7 +43,6 @@ function getGithubProfile(answers){
         .get(queryURL)
         .then(res => {
             console.log("GitHub data received...");
-            console.log(res);
             return res.data;
         })
         .catch(err=>{
