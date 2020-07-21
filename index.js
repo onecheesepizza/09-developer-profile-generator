@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const axios = require('axios');
+const puppeteer = require('puppeteer');
 const pdf = require('html-pdf');
 const pdfOptions = { 
     format: 'Letter',
@@ -47,6 +48,7 @@ function getGithubProfile(answers){
         .get(queryURL)
         .then(res => {
             console.log("GitHub data received...");
+            console.log(res);
             return res.data;
         })
         .catch(err=>{
@@ -63,21 +65,24 @@ function generatePageHTML(gitHubProfile, gitHubStars, answers){
     return htmlTemplate;
 }
 
-function savePDF(html){
+async function savePDF(html){
     console.log("Creating and saving PDF...");
-    pdf
-    //generate pdf
-    .create(html, pdfOptions)
-    //save pdf to file
-    .toFile("./profile.pdf", (err, res) => {
-      //error  
-      if (err) return console.log(err);
-      //success
-      console.log("Successfully saved profile.pdf");
-      console.log(res.filename); 
+    //set up puppeteer to view html and save pdf
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    //generate page
+    await page.setContent(html);
+    //save pdf
+    await page.pdf({ path: 'profile.pdf', format: 'A4', printBackground: true, scale: 1.5});
+    //close puppeteer
+    await browser.close()
+    //handle errors
+    .catch(err => {
+        return console.log(err);
     });
+    //success log
+    console.log("Successfully saved profile.pdf");   
 }
-
 //main app
 async function mainApp(){
     //prompt user
