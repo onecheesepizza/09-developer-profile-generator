@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/onecheesepizza/09-developer-profile-generator#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "inquirer": "^7.3.2",
     "puppeteer": "^5.2.0"
   },
